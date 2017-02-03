@@ -54,7 +54,7 @@ ROOT_URLCONF = 'replay_archive.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -62,7 +62,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-            ],
+            ]
         },
     },
 ]
@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'replay_archive.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mscp',
+        'USER': 'root',
+        'PASSWORD': 'topsecret',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
